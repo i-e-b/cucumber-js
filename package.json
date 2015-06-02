@@ -58,7 +58,8 @@
     "nebehr <thorgeir@tut.by>",
     "Jesse Harlin <harlinjesse@gmail.com>",
     "Iain Ballard",
-    "Andrew Benjamin"
+    "Andrew Benjamin",
+    "Sonny Piers <sonny@fastmail.net>"
   ],
   "repository": {
     "type": "git",
@@ -79,8 +80,10 @@
     "coffee-script": "1.8.0",
     "cucumber-html": "0.2.3",
     "gherkin": "2.12.2",
+    "hide-stack-frames-from": "^1.0.0",
     "nopt": "3.0.1",
     "pogo": "0.9.4",
+    "stack-chain": "^1.3.1",
     "underscore": "1.7.0",
     "underscore.string": "2.3.3",
     "walkdir": "0.0.7",
@@ -98,7 +101,7 @@
     "exorcist": "^0.1.6"
   },
   "scripts": {
-    "test": "jshint bundler.js bin lib spec && jasmine-node spec && ./bin/cucumber.js -i"
+    "test": "jshint bundler.js bin lib spec && jasmine-node spec && ./bin/cucumber.js -f progress -i"
   },
   "bin": {
     "cucumber.js": "./bin/cucumber.js",
