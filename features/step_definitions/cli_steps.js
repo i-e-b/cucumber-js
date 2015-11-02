@@ -11,13 +11,22 @@ var cliSteps = function cliSteps() {
   var executablePath = path.join(__dirname, '..', '..', 'bin', 'cucumber.js');
 
   var isWin = /^win/.test(process.platform);
-  //var Buffers = require('buffers');
+  var Buffers = require('buffers');
 
   var winExecFile = function(exePath, args, cwd, callback){
-    console.log('out');
-    var proc = child_process.exec('cmd', '/c node ' + exePath + ' ' + args.join(' '), {cwd:cwd}, callback);
-    proc.on('close', function(code){console.log('closed '+code);});
-    proc.on('error', function(code){console.log('error '+code);});
+    // Window process management is so fun.
+    var bufferErr = new Buffers();
+    var bufferOut = new Buffers();
+
+    var proc = child_process.exec('node ', exePath + ' ' + args.join(' '), {cwd:cwd});
+    proc.on('exit', function () {
+      callback(undefined,bufferOut.toString('utf8'),bufferErr.toString('utf8'));
+    });
+    proc.on('error', function (err) {
+      callback(err,bufferOut.toString('utf8'),bufferErr.toString('utf8'));
+    });
+    proc.stdout.on('data', function(d){bufferOut.push(d);});
+    proc.stderr.on('data', function(d){bufferErr.push(d);});
 
   };
 
@@ -28,13 +37,7 @@ var cliSteps = function cliSteps() {
     var world = this;
     var cwd = dir ? path.join(this.tmpDir, dir) : this.tmpDir;
 
-    console.log(JSON.stringify({
-        'exe':executablePath,
-        'args':args,
-        'cwd':cwd
-    },null,2));
     execFile(executablePath, args.split(' '), {cwd: cwd}, function (error, stdout, stderr) {
-      console.log('cb');
        world.lastRun = {
          error:  error,
          stdout: colors.strip(stdout),
