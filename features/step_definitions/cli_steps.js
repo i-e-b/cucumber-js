@@ -1,6 +1,7 @@
+// vim: noai:ts=2:sw=2
 var cliSteps = function cliSteps() {
   var colors = require('colors/safe');
-  var execFile = require('child_process').execFile;
+  var child_process = require('child_process');
   var path = require('path');
 
   var helpers = require('../support/helpers');
@@ -9,12 +10,31 @@ var cliSteps = function cliSteps() {
 
   var executablePath = path.join(__dirname, '..', '..', 'bin', 'cucumber.js');
 
+  var isWin = /^win/.test(process.platform);
+  //var Buffers = require('buffers');
+
+  var winExecFile = function(exePath, args, cwd, callback){
+    console.log('out');
+    var proc = child_process.exec('cmd', '/c node ' + exePath + ' ' + args.join(' '), {cwd:cwd}, callback);
+    proc.on('close', function(code){console.log('closed '+code);});
+    proc.on('error', function(code){console.log('error '+code);});
+
+  };
+
+  var execFile = (isWin) ? (winExecFile) : (child_process.execFile);
+
   this.When(/^I run cucumber.js(?: from the "([^"]*)" directory)?(?: with `(|.+)`)?$/, {timeout: 10000}, function(dir, args, callback) {
     args = args || '';
     var world = this;
     var cwd = dir ? path.join(this.tmpDir, dir) : this.tmpDir;
 
+    console.log(JSON.stringify({
+        'exe':executablePath,
+        'args':args,
+        'cwd':cwd
+    },null,2));
     execFile(executablePath, args.split(' '), {cwd: cwd}, function (error, stdout, stderr) {
+      console.log('cb');
        world.lastRun = {
          error:  error,
          stdout: colors.strip(stdout),

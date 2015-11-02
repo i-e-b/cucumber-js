@@ -99,6 +99,7 @@
     "source-map" : "0.4.2"
   },
   "devDependencies": {
+    "buffers":"0.1.1",
     "async": "^1.4.2",
     "browserify": "11.1.0",
     "connect": "3.4.0",
@@ -113,7 +114,7 @@
     "uglifyify": "3.0.1"
   },
   "scripts": {
-    "feature-test": "./bin/cucumber.js -p build",
+    "feature-test": "node ./bin/cucumber.js -p build",
     "lint": "jshint bin bundler.js features lib spec",
     "test": "npm run lint && npm run unit-test && npm run feature-test",
     "unit-test": "jasmine",
