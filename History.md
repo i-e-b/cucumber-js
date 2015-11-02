@@ -1,8 +1,136 @@
 # Cucumber.js changelog
 
-## [v0.5.x](https://github.com/cucumber/cucumber-js/compare/v0.5.0...master)
+## [v0.8.x](https://github.com/cucumber/cucumber-js/compare/v0.8.0...master)
 
-### [master (unreleased)](https://github.com/cucumber/cucumber-js/compare/v0.5.2...master)
+### [master (unreleased)](https://github.com/cucumber/cucumber-js/compare/v0.8.1...master)
+
+### [v0.8.1](https://github.com/cucumber/cucumber-js/compare/v0.8.0...v0.8.1)
+
+#### Documentation, internals and tests
+
+* Update World constructor documentation (Charlie Rudolph)
+* Remove badges from README.md (Charlie Rudolph)
+
+### [v0.8.0](https://github.com/cucumber/cucumber-js/compare/v0.7.0...v0.8.0)
+
+#### Breaking changes
+
+* Add strict function length checking to hooks and step definitions (Charlie Rudolph)
+* Make World constructors strictly synchronous (Julien Biezemans)
+
+#### New features
+
+* Add cli option to fail fast (Charlie Rudolph)
+* Add cli for specifying multiple formatters (Charlie Rudolph)
+* Add support for passing multiple line numbers (Charlie Rudolph)
+* Add ability to disable colors (Charlie Rudolph)
+* Add support for custom snippet syntaxes (Charlie Rudolph)
+
+#### Changed features
+
+* Hide errors in pretty formatter summary (Charlie Rudolph)
+* Remove unnecessary whitespaces in pretty formatter output (Charlie Rudolph)
+
+#### Fixes
+
+* Properly ask configurations for strict mode (Julien Biezemans)
+
+#### Documentation, internals and tests
+
+* Document data table interface (Charlie Rudolph)
+* Refactor: statuses (Charlie Rudolph)
+* Refactor: cleanup step definitions (Charlie Rudolph)
+* Cleanup: remove log to console from listeners (Charlie Rudolph)
+* Use svg badges (Charlie Rudolph)
+* Rename CONTRIBUTE.md to CONTRIBUTING.md (Julien Biezemans)
+* Require maintainers to document API changes in release tag descriptions (Julien Biezemans)
+* Add build-release NPM script (Julien Biezemans)
+
+### [v0.7.0](https://github.com/cucumber/cucumber-js/compare/v0.6.0...v0.7.0)
+
+#### New features
+
+* Time out steps that take too long (Charles Rudolph)
+* Print execution time (Charles Rudolph)
+
+#### Changed features
+
+* Remove callback.fail() (Charles Rudolph)
+* Update hooks interface (Charles Rudolph)
+
+#### Fixes
+
+* Don't try to handle empty features (Julien Biezemans)
+* Fix unpredictable nopt behavior (Charles Rudolph)
+* Fix pretty formatter step indentation after doc string (Charles Rudolph)
+
+#### Documentation, internals and tests
+
+* Rename Collection functions: forEach/syncForEach -> asyncForEach/forEach (Charles Rudolph)
+* Simplify installation instructions (Charles Rudolph)
+* Fix spec on Windows (Marcel Hoyer)
+* Simplify World examples in README (Charles Rudolph)
+* Update license in package.json (Charles Rudolph)
+* Convert test framework from jasmine-node to jasmine (Charles Rudolph)
+* Separate test output (Charles Rudolph)
+* Remove ruby, legacy features, cucumber-tck (Charles Rudolph)
+
+### [v0.6.0](https://github.com/cucumber/cucumber-js/compare/v0.5.3...v0.6.0)
+
+#### New features
+
+* Add --no-source to hide uris (Eddie Loeffen)
+* Add dry run capability (Karthik Viswanath)
+* Introduce --compiler CLI option (Charles Rudolph)
+
+#### Documentation, internals and tests
+
+* Stop IRC and email notifications from Travis (Julien Biezemans)
+* Remove Node.js 0.11 explicit support (Julien Biezemans)
+* Use basic for loop for array iterations (Charles Rudolph)
+* Bump browserify (Charles Rudolph)
+* Add CLI help for --profile (Charles Rudolph)
+* Use colors library (Charles Rudolph)
+* Improve --compiler help (Julien Biezemans)
+* Fix loading of external compiler modules (Julien Biezemans)
+* Document a few common compiler usages (Julien Biezemans)
+
+### [v0.5.3](https://github.com/cucumber/cucumber-js/compare/v0.5.2...v0.5.3)
+
+#### New features
+
+* Add support for profiles (Charles Rudolph)
+
+#### Changed features
+
+* Allow for multiple instances of placeholder (Charles Rudolph)
+* Print relative paths in summary output (Charles Rudolph)
+
+#### Fixes
+
+* Remove duplicate line number from output (Charles Rudolph)
+* Return clone of array from DataTable.Row.raw() (Julien Biezemans)
+
+#### Documentation, internals and tests
+
+* Update various urls (Dale Gardner)
+* Bump CoffeeScript (Julien Biezemans)
+* Bump PogoScript (Julien Biezemans)
+* Bump underscore (Julien Biezemans)
+* Bump underscore.string (Julien Biezemans)
+* Bump stack-chain (Julien Biezemans)
+* Bump nopt (Julien Biezemans)
+* Bump connect (Julien Biezemans)
+* Bump exorcist (Julien Biezemans)
+* Bump uglifyify (Julien Biezemans)
+* Bump through (Julien Biezemans)
+* Bump serve-static (Julien Biezemans)
+* Bump rimraf (Julien Biezemans)
+* Bump mkdirp (Julien Biezemans)
+* Bump jshint (Julien Biezemans)
+* Remove extra bracket in README example (Julien Biezemans)
+* Officially support Node.js 4.x (Julien Biezemans)
+* Use a profile for own build (Julien Biezemans)
 
 ### [v0.5.2](https://github.com/cucumber/cucumber-js/compare/v0.5.1...v0.5.2)
 
