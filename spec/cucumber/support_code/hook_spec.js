@@ -5,6 +5,8 @@ describe("Cucumber.SupportCode.Hook", function () {
   var hook, code, options, stepDefinition;
 
   beforeEach(function () {
+    global.CUKE_LAST_CODE_PATH = 'PATH';
+    global.CUKE_SUPPORT_CODE_TYPE = 'TYPE';
     code           = createSpy("hook code");
     options        = {};
     stepDefinition = createSpy("step definition");
@@ -14,7 +16,7 @@ describe("Cucumber.SupportCode.Hook", function () {
 
   describe("constructor", function () {
     it("inherits from Cucumber.SupportCode.StepDefinition", function () {
-      expect(Cucumber.SupportCode.StepDefinition).toHaveBeenCalledWith('', {}, code);
+      expect(Cucumber.SupportCode.StepDefinition).toHaveBeenCalledWith('', {}, code, 'PATH', 'TYPE');
       expect(hook).toBe(stepDefinition);
     });
   });
